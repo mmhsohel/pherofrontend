@@ -1,7 +1,7 @@
 export async function uploadToImgbb(file: File): Promise<string> {
     console.warn("IMGBB_DIAGNOSTIC_V2: upload function called");
 
-    const apiKey = process.env.NEXT_PUBLIC_IMGBB_PUBLIC_KEY;
+    const apiKey = "46db9b678fc5c74f3bcb4cc3c2487ffb";
 
     console.warn("IMGBB_DIAGNOSTIC_V2:", {
         exists: Boolean(apiKey),
