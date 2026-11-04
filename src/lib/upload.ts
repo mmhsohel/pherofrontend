@@ -1,17 +1,11 @@
 export async function uploadToImgbb(file: File): Promise<string> {
   const apiKey = "46db9b678fc5c74f3bcb4cc3c2487ffb";
 
-  // Check the value inside the deployed JavaScript
-  alert(
-    `Runtime API key length: ${apiKey.length}\n` +
-    `First 4 characters: ${apiKey.slice(0, 4)}`
-  );
+  // 1. Use the base endpoint without the key in the path
+  const url = new URL("https://api.imgbb.com/1/upload");
 
-  const url = new URL("https://api.imgbb.com/1/upload/46db9b678fc5c74f3bcb4cc3c2487ffb");
-
-  alert(
-    `Request API key length: ${url.searchParams.get("key")?.length}`
-  );
+  // 2. Append the API key as a proper query parameter
+  url.searchParams.append("key", apiKey);
 
   const fd = new FormData();
   fd.append("image", file, file.name);
