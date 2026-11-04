@@ -1,6 +1,8 @@
 
 export async function uploadToImgbb(file: File): Promise<string> {
-  const apiKey = process.env.NEXT_PUBLIC_IMGBB_PUBLIC_KEY;
+ const apiKey = process.env.NEXT_PUBLIC_IMGBB_PUBLIC_KEY;
+
+ console.log("Uploading to ImgBB with API key:", apiKey);
 
   if (!apiKey) {
     throw new Error("ImgBB API key is missing");
