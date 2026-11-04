@@ -7,8 +7,7 @@ export async function uploadToImgbb(file: File): Promise<string> {
     `First 4 characters: ${apiKey.slice(0, 4)}`
   );
 
-  const url = new URL("https://api.imgbb.com/1/upload");
-  url.searchParams.set("key", apiKey.trim());
+  const url = new URL("https://api.imgbb.com/1/upload/46db9b678fc5c74f3bcb4cc3c2487ffb");
 
   alert(
     `Request API key length: ${url.searchParams.get("key")?.length}`
