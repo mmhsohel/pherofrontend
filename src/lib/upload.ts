@@ -1,5 +1,5 @@
 export async function uploadToImgbb(file: File): Promise<string> {
-  const apiKey = "YOUR_NEW_32_CHARACTER_API_KEY";
+  const apiKey = "46db9b678fc5c74f3bcb4cc3c2487ffb";
 
   // Check the value inside the deployed JavaScript
   alert(
