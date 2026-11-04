@@ -1,8 +1,8 @@
 
 export async function uploadToImgbb(file: File): Promise<string> {
- const apiKey = process.env.NEXT_PUBLIC_IMGBB_PUBLIC_KEY;
+  const apiKey = process.env.NEXT_PUBLIC_IMGBB_PUBLIC_KEY;
 
- console.log("Uploading to ImgBB with API key:", apiKey);
+  console.log("ImgBB API key available:", Boolean(apiKey));
 
   if (!apiKey) {
     throw new Error("ImgBB API key is missing");
@@ -26,11 +26,8 @@ export async function uploadToImgbb(file: File): Promise<string> {
   const json = await res.json();
 
   if (!res.ok || !json.success) {
-    console.error("ImgBB error:", json);
-
-    throw new Error(
-      json.error?.message || "Image upload failed"
-    );
+    console.error("ImgBB upload error:", json);
+    throw new Error(json.error?.message || "Image upload failed");
   }
 
   return json.data.url;
