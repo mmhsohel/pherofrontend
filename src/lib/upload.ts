@@ -1,4 +1,4 @@
-async function uploadToImgbb(file: File): Promise<string> {
+export async function uploadToImgbb(file: File): Promise<string> {
     let a = new FormData();
     a.append("image", file);
     
