@@ -1,34 +1,34 @@
 
 export async function uploadToImgbb(file: File): Promise<string> {
-  const apiKey = process.env.NEXT_PUBLIC_IMGBB_PUBLIC_KEY;
+    const apiKey = process.env.NEXT_PUBLIC_IMGBB_PUBLIC_KEY;
+    console.log("ImgBB API key exists:", Boolean(apiKey));
+    console.log("ImgBB API key length:", apiKey?.length);
 
-  console.log("ImgBB API key available:", Boolean(apiKey));
-
-  if (!apiKey) {
-    throw new Error("ImgBB API key is missing");
-  }
-
-  if (!file || file.size === 0) {
-    throw new Error("Please select a valid image");
-  }
-
-  const fd = new FormData();
-  fd.append("image", file, file.name);
-
-  const res = await fetch(
-    `https://api.imgbb.com/1/upload?key=${apiKey}`,
-    {
-      method: "POST",
-      body: fd,
+    if (!apiKey) {
+        throw new Error("ImgBB API key is missing in deployed build");
     }
-  );
 
-  const json = await res.json();
+    if (!file || file.size === 0) {
+        throw new Error("Please select a valid image");
+    }
 
-  if (!res.ok || !json.success) {
-    console.error("ImgBB upload error:", json);
-    throw new Error(json.error?.message || "Image upload failed");
-  }
+    const fd = new FormData();
+    fd.append("image", file, file.name);
 
-  return json.data.url;
+    const res = await fetch(
+        `https://api.imgbb.com/1/upload?key=${apiKey}`,
+        {
+            method: "POST",
+            body: fd,
+        }
+    );
+
+    const json = await res.json();
+
+    if (!res.ok || !json.success) {
+        console.error("ImgBB upload error:", json);
+        throw new Error(json.error?.message || "Image upload failed");
+    }
+
+    return json.data.url;
 }
