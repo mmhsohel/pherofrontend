@@ -1,7 +1,35 @@
+
 export async function uploadToImgbb(file: File): Promise<string> {
-  const fd = new FormData(); fd.append("image", file);
-  const res = await fetch(`https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_KEY}`, { method: "POST", body: fd });
+  const apiKey = process.env.NEXT_PUBLIC_IMGBB_KEY;
+
+  if (!apiKey) {
+    throw new Error("ImgBB API key is missing");
+  }
+
+  if (!file || file.size === 0) {
+    throw new Error("Please select a valid image");
+  }
+
+  const fd = new FormData();
+  fd.append("image", file, file.name);
+
+  const res = await fetch(
+    `https://api.imgbb.com/1/upload?key=${apiKey}`,
+    {
+      method: "POST",
+      body: fd,
+    }
+  );
+
   const json = await res.json();
-  if (!json.success) throw new Error("Image upload failed");
+
+  if (!res.ok || !json.success) {
+    console.error("ImgBB error:", json);
+
+    throw new Error(
+      json.error?.message || "Image upload failed"
+    );
+  }
+
   return json.data.url;
 }
