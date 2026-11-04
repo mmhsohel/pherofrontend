@@ -23,7 +23,10 @@ function Form() {
     try {
       let image = f.get("imageUrl") as string;
       const file = f.get("imageFile") as File;
-      if (file && file.size > 0) image = await uploadToImgbb(file);
+      if (file && file.size > 0) {
+    console.warn("ADD_STUDIO_UPLOAD_V3: Starting upload");
+    image = await uploadToImgbb(file);
+}
       if (!image) throw new Error("Please add an image URL or upload a file");
 
       await api("/studios", { method: "POST", body: JSON.stringify({
