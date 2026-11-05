@@ -1,17 +1,24 @@
-export async function uploadToImgbb(file: File): Promise<string> {
-    let a = new FormData();
-    a.append("image", file);
-    
-    // Put your actual 32-character API key directly here if environment variables are failing
-    const apiKey = "46db9b678fc5c74f3bcb4cc3c2487ffb"; 
-    console.warn("ADD_STUDIO_UPLOAD_V3: Uploading to imgbb with API key:", apiKey);
-    
-    let t = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
+// app/actions/upload.ts
+"use server";
+
+export async function uploadAction(formData: FormData) {
+    const file = formData.get("image") as File;
+    if (!file) throw new Error("No file provided");
+
+    const imgbbData = new FormData();
+    imgbbData.append("image", file);
+
+    const apiKey = "46db9b678fc5c74f3bcb4cc3c2487ffb";
+
+    const response = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
         method: "POST",
-        body: a
+        body: imgbbData,
     });
-    
-    let i = await t.json();
-    if (!i.success) throw Error(i.error?.message || "Image upload failed");
-    return i.data.url;
+
+    const result = await response.json();
+    if (!result.success) {
+        throw new Error(result.error?.message || "Upload failed");
+    }
+
+    return result.data.url;
 }
