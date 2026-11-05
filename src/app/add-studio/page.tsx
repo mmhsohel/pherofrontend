@@ -29,10 +29,7 @@ function Form() {
       if (file && file.size > 0) {
         console.warn("ADD_STUDIO_UPLOAD_V3: Starting server action upload");
         
-        const uploadData = new FormData();
-        uploadData.append("image", file);
-        
-        image = await uploadAction(uploadData); // Calls the server action!
+        image = await uploadAction(file); // Calls the server action!
       }
 
       if (!image) throw new Error("Please add an image URL or upload a file");
