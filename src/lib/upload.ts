@@ -1,24 +1,22 @@
-// app/actions/upload.ts
-"use server";
+export async function uploadAction(file: File): Promise<string> {
+    const cloudName = "dwdmomytl"; 
+    const uploadPreset = "studio"; // e.g. "ml_default" or your custom name
 
-export async function uploadAction(formData: FormData) {
-    const file = formData.get("image") as File;
-    if (!file) throw new Error("No file provided");
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", uploadPreset);
 
-    const imgbbData = new FormData();
-    imgbbData.append("image", file);
-
-    const apiKey = "46db9b678fc5c74f3bcb4cc3c2487ffb";
-
-    const response = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
+    const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
         method: "POST",
-        body: imgbbData,
+        body: formData,
     });
 
     const result = await response.json();
-    if (!result.success) {
-        throw new Error(result.error?.message || "Upload failed");
+
+    if (!response.ok || !result.secure_url) {
+        console.error("Cloudinary Error:", result);
+        throw new Error(result.error?.message || "Cloudinary image upload failed");
     }
 
-    return result.data.url;
+    return result.secure_url;
 }
