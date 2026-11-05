@@ -5,9 +5,13 @@ import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import "swiper/css"; import "swiper/css/pagination"; import "swiper/css/effect-fade";
 
 const slides = [
-  { img: "https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=1600", h: "Light Your Next Shoot", p: "Cyc walls, natural-light lofts and pro lighting rigs, bookable by the hour." },
-  { img: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1600", h: "Record Where Music Is Made", p: "Treated rooms, vintage consoles and isolation booths ready when you are." },
-  { img: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=1600", h: "Turn Your Space Into Income", p: "List your studio, set your rate, and welcome verified creators." },
+  { img: "/images/hero/1.jpeg", h: "Light Your Next Shoot", p: "Cyc walls, natural-light lofts and pro lighting rigs, bookable by the hour." },
+  { img: "/images/hero/2.jpeg", h: "Record Where Music Is Made", p: "Treated rooms, vintage consoles and isolation booths ready when you are." },
+  { img: "/images/hero/3.jpeg", h: "Turn Your Space Into Income", p: "List your studio, set your rate, and welcome verified creators." },
+  { img: "/images/hero/4.jpg", h: "Your Voice Deserves a Great Room", p: "Soundproofed podcast lounges with pro microphones, ready for your next episode." },
+  { img: "/images/hero/5.jpg", h: "From Script to Soundstage", p: "Book full production stages with grid lighting, green screens and power on tap." },
+  { img: "/images/hero/6.jpg", h: "Make Something With Your Hands", p: "Art workshops with wheels, kilns and open benches, available by the hour." },
+  { img: "/images/hero/7.jpg", h: "Where Creative Teams Come Together", p: "Find a space that fits your crew, your gear and your budget, then book it in minutes." },
 ];
 
 export default function HeroSlider() {

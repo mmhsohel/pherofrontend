@@ -3,10 +3,10 @@ import { Camera, Clapperboard, Mic, Music, Palette } from "lucide-react";
 
 const cats = [
   { name: "Photo Studios", value: "Photo Studio", icon: Camera },
-  { name: "Sound Stages", value: "Film Stage", icon: Clapperboard },
-  { name: "Podcast Rooms", value: "Podcast Lounge", icon: Mic },
+  { name: "Film Stages", value: "Film Stage", icon: Clapperboard },  // Updated name label for clarity
+  { name: "Podcast Lounges", value: "Podcast Lounge", icon: Mic },    // Updated name label
   { name: "Music Suites", value: "Music Suite", icon: Music },
-  { name: "Art Workshops", value: "Workshop", icon: Palette },
+  { name: "Workshops", value: "Workshop", icon: Palette },            // Updated name label
 ];
 
 export default function Categories() {
@@ -17,9 +17,13 @@ export default function Categories() {
         <p className="section-sub">Pick a craft and we'll show the rooms built for it.</p>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-8">
           {cats.map(({ name, value, icon: Icon }) => (
-            <Link key={value} href={`/studios?category=${encodeURIComponent(value)}`}
-              className="card bg-base-100 hover:bg-primary hover:text-primary-content transition p-6 items-center text-center h-40 justify-center shadow">
-              <Icon size={36} /><span className="font-semibold mt-3">{name}</span>
+            <Link 
+              key={value} 
+              href={`/studios?category=${encodeURIComponent(value)}`}
+              className="card bg-base-100 hover:bg-primary hover:text-primary-content transition p-6 items-center text-center h-40 justify-center shadow"
+            >
+              <Icon size={36} />
+              <span className="font-semibold mt-3">{name}</span>
             </Link>
           ))}
         </div>
