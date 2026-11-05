@@ -15,11 +15,11 @@ const values = [
   { icon: Users, t: "Community Driven", d: "Hosts and creators grow together, and every review makes the next booking better." },
 ];
 
-// Replace with your own team details and photos.
+
 const team = [
-  { name: "Your Name", role: "Founder & Full-Stack Developer", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=600&fit=crop" },
-  { name: "Team Member", role: "Product & UX Design", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=600&fit=crop" },
-  { name: "Team Member", role: "Host Community Lead", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=600&fit=crop" },
+  { name: "Sohel", role: "Founder & Full-Stack Developer", img: "/images/team/per.jpeg" },
+  { name: "Sumon", role: "Product & UX Design", img: "/images/team/per2.jpeg" },
+  { name: "Jibon", role: "Host Community Lead", img: "/images/team/per3.jpeg" },
 ];
 
 export default function AboutPage() {

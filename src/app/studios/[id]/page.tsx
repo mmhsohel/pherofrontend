@@ -65,6 +65,8 @@ export default function StudioDetails() {
   const reviews: any[] = studio.reviews || [];
   const isOwner = user?.email === studio.ownerEmail;
 
+  console.log("StudioDetails user:", studio);
+
   const book = () => {
     if (!user) {
       toast.info("Please log in to book this studio");
