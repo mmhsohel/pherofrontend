@@ -85,43 +85,51 @@ function Form() {
   const preview = filePreview || urlPreview;
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const f = new FormData(e.currentTarget);
-    setLoading(true);
+  e.preventDefault();
+  const form = e.currentTarget;          // save it before any await
+  const f = new FormData(form);
+  setLoading(true);
 
-    try {
-      let image = f.get("imageUrl") as string;
-      const file = f.get("imageFile") as File;
+  try {
+    let image = f.get("imageUrl") as string;
+    const file = f.get("imageFile") as File;
 
-      if (file && file.size > 0) {
-        image = await uploadAction(file);
-      }
-
-      if (!image) throw new Error("Please add an image URL or upload a file");
-
-      await api("/studios", {
-        method: "POST",
-        body: JSON.stringify({
-          title: f.get("title"),
-          category: f.get("category"),
-          hourlyRate: f.get("hourlyRate"),
-          deposit: f.get("deposit"),
-          capacity: f.get("capacity"),
-          location: f.get("location"),
-          image,
-          amenities,
-          overview: f.get("overview"),
-        }),
-      });
-
-      toast.success("Studio listed successfully!");
-      router.push("/my-listings");
-    } catch (err: any) {
-      toast.error(err.message);
-    } finally {
-      setLoading(false);
+    if (file && file.size > 0) {
+      image = await uploadAction(file);
     }
-  };
+
+    if (!image) throw new Error("Please add an image URL or upload a file");
+
+    await api("/studios", {
+      method: "POST",
+      body: JSON.stringify({
+        title: f.get("title"),
+        category: f.get("category"),
+        hourlyRate: f.get("hourlyRate"),
+        deposit: f.get("deposit"),
+        capacity: f.get("capacity"),
+        location: f.get("location"),
+        image,
+        amenities,
+        overview: f.get("overview"),
+      }),
+    });
+
+    // Clear everything so the form is empty when the user comes back
+    form.reset();
+    setAmenities([]);
+    setUrlPreview("");
+    setFilePreview("");
+    setOverviewLen(0);
+
+    toast.success("Studio listed successfully!");
+    router.push("/my-listings");
+  } catch (err: any) {
+    toast.error(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="min-h-screen bg-base-200/50">

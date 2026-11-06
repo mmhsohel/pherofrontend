@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 import { signUp, signIn } from "@/lib/auth-client";
 
 export default function RegisterPage() {
@@ -55,6 +56,8 @@ export default function RegisterPage() {
         <div className="divider">OR</div>
         <button onClick={() => signIn.social({ provider: "google", callbackURL: "/auth-callback" })}
           className="btn btn-outline w-full"><FcGoogle size={22} /> Continue with Google</button>
+        <button onClick={() => signIn.social({ provider: "github", callbackURL: "/auth-callback" })}
+          className="btn btn-outline w-full"><FaGithub size={22} /> Continue with GitHub</button>
         <p className="text-center text-sm mt-4">Already a member? <Link href="/login" className="link link-primary">Login</Link></p>
       </div>
     </div>

@@ -169,7 +169,7 @@ export default function StudioDetails() {
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex items-center gap-3">
                         <div className="avatar placeholder">
-                          <div className="bg-secondary text-secondary-content w-10 rounded-full">
+                          <div className="bg-secondary text-secondary-content w-10 h-10 flex items-center justify-center text-xl font-bold rounded-full">
                             <span>{r.userName?.[0]}</span>
                           </div>
                         </div>
