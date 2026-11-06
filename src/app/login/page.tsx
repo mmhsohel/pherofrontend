@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 import { signIn, issueJwt } from "@/lib/auth-client";
 
 function LoginForm() {
@@ -39,6 +40,8 @@ function LoginForm() {
         </form>
         <div className="divider">OR</div>
         <button onClick={google} className="btn btn-outline w-full"><FcGoogle size={22} /> Continue with Google</button>
+         <button onClick={() => signIn.social({ provider: "github", callbackURL: "/auth-callback" })}
+                  className="btn btn-outline w-full mt-2"><FaGithub size={22} /> Continue with GitHub</button>
         <p className="text-center text-sm mt-4">New here? <Link href="/register" className="link link-primary">Register</Link></p>
       </div>
     </div>

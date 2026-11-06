@@ -57,7 +57,7 @@ export default function RegisterPage() {
         <button onClick={() => signIn.social({ provider: "google", callbackURL: "/auth-callback" })}
           className="btn btn-outline w-full"><FcGoogle size={22} /> Continue with Google</button>
         <button onClick={() => signIn.social({ provider: "github", callbackURL: "/auth-callback" })}
-          className="btn btn-outline w-full"><FaGithub size={22} /> Continue with GitHub</button>
+          className="btn btn-outline w-full mt-2"><FaGithub size={22} /> Continue with GitHub</button>
         <p className="text-center text-sm mt-4">Already a member? <Link href="/login" className="link link-primary">Login</Link></p>
       </div>
     </div>
