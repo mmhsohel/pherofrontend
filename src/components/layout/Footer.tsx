@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Aperture } from "lucide-react";
 import { FaXTwitter, FaInstagram, FaYoutube, FaLinkedinIn } from "react-icons/fa6";
 import CurrentYear from "./CurrentYear";
+import Image from "next/image";
 
 const cats = ["Photo Studios", "Sound Stages", "Podcast Rooms", "Music Suites", "Art Workshops"];
 
@@ -11,7 +11,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <Link href="/" className="flex items-center gap-2 text-2xl font-extrabold">
-            <Aperture className="text-primary" size={30} /> Studio<span className="text-primary">Space</span>
+            <Image src="/logo-mark-512.jpg" alt="Logo" width={48} height={48} />
+               Studio<span className="text-primary">Space</span>
           </Link>
           <p className="mt-3 text-sm text-base-content/70">
             Our mission is to put every creator in the right room — from cyc walls to soundproof suites — with fair, transparent pricing.

@@ -1,4 +1,3 @@
-// HostGuarantee.tsx
 import { ShieldCheck, BadgeCheck, Wrench, Headset } from "lucide-react";
 const items = [
   { icon: ShieldCheck, t: "Liability Protection", d: "Every booking is covered against accidental damage." },

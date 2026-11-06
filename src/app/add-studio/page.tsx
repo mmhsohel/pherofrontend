@@ -86,7 +86,7 @@ function Form() {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
-  const form = e.currentTarget;          // save it before any await
+  const form = e.currentTarget;      
   const f = new FormData(form);
   setLoading(true);
 
@@ -115,7 +115,6 @@ function Form() {
       }),
     });
 
-    // Clear everything so the form is empty when the user comes back
     form.reset();
     setAmenities([]);
     setUrlPreview("");
@@ -147,7 +146,7 @@ function Form() {
         </div>
 
         <form onSubmit={onSubmit} className="space-y-5">
-          {/* 1. Basics */}
+          
           <Section icon={Building2} title="Studio basics" hint="The name, type and location creators will search for.">
             <div className="grid gap-4 md:grid-cols-2">
               <Field label="Studio title" className="md:col-span-2">
@@ -198,7 +197,6 @@ function Form() {
             </div>
           </Section>
 
-          {/* 2. Pricing */}
           <Section icon={DollarSign} title="Pricing & capacity" hint="Transparent pricing builds trust with guests.">
             <div className="grid gap-4 sm:grid-cols-3">
               <Field label="Hourly rate ($)">
@@ -243,7 +241,6 @@ function Form() {
             </div>
           </Section>
 
-          {/* 3. Photo */}
           <Section icon={Camera} title="Cover photo" hint="Paste an image link or upload a file. Upload takes priority.">
             <div className="grid gap-5 md:grid-cols-2">
               <div className="space-y-4">

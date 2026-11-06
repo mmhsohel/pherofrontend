@@ -49,7 +49,6 @@ function Listings() {
         <div className="mt-8"><EmptyState title="You haven't listed a studio yet" text="Share your space with creators nearby." cta="Add New Studio" href="/add-studio" /></div>
       ) : (
         <>
-          {/* Desktop table */}
           <div className="hidden md:block overflow-x-auto mt-8 rounded-box border border-base-300">
             <table className="table bg-base-200">
               <thead>
@@ -81,7 +80,7 @@ function Listings() {
             </table>
           </div>
 
-          {/* Mobile cards */}
+          
           <div className="grid gap-4 mt-8 md:hidden">
             {items.map((s) => (
               <div key={s._id} className="card bg-base-200 shadow">

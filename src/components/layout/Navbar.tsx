@@ -61,7 +61,7 @@ export default function Navbar() {
               </div>
               <ul tabIndex={0} className="menu dropdown-content bg-base-100 rounded-box z-10 mt-3 w-60 p-2 shadow-lg border border-base-300">
                 <li className="menu-title text-base-content">{user.name}</li>
-                <li><Link href="/">Dashboard</Link></li>
+                <li><Link href="/dashboard">Dashboard</Link></li>
                 <li><Link href="/add-studio">Add New Studio</Link></li>
                 <li><Link href="/my-listings">My Studio Listings</Link></li>
                 <li><Link href="/my-bookings">My Bookings</Link></li>

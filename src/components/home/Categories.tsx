@@ -3,10 +3,10 @@ import { Camera, Clapperboard, Mic, Music, Palette } from "lucide-react";
 
 const cats = [
   { name: "Photo Studios", value: "Photo Studio", icon: Camera },
-  { name: "Film Stages", value: "Film Stage", icon: Clapperboard },  // Updated name label for clarity
-  { name: "Podcast Lounges", value: "Podcast Lounge", icon: Mic },    // Updated name label
+  { name: "Film Stages", value: "Film Stage", icon: Clapperboard }, 
+  { name: "Podcast Lounges", value: "Podcast Lounge", icon: Mic },    
   { name: "Music Suites", value: "Music Suite", icon: Music },
-  { name: "Workshops", value: "Workshop", icon: Palette },            // Updated name label
+  { name: "Workshops", value: "Workshop", icon: Palette },            
 ];
 
 export default function Categories() {

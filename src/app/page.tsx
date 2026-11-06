@@ -8,7 +8,6 @@ import HowBookingWorks from "@/components/home/HowBookingWorks";
 import HostGuarantee from "@/components/home/HostGuarantee";
 
 export default async function Home() {
-  // Allow dynamic values (Date.now / new Date) used inside FeaturedStudios
   await connection();
 
   return (

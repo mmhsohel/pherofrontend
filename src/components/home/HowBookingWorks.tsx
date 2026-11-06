@@ -1,4 +1,3 @@
-// HowBookingWorks.tsx
 import { Search, Clock, CalendarCheck, Clapperboard } from "lucide-react";
 const steps = [
   { icon: Search, t: "Discover Spaces", d: "Filter by category, price and location." },

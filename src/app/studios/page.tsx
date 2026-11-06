@@ -12,15 +12,13 @@ const CATS = ["All", "Photo Studio", "Film Stage", "Podcast Lounge", "Music Suit
 function Explore() {
   const params = useSearchParams();
   
-  // 1. Initialize state from URL params
   const [category, setCategory] = useState(params.get("category") || "All");
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("newest");
   const [studios, setStudios] = useState<Studio[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔑 2. CRITICAL: Listen to URL param changes (when clicking category links from home/elsewhere)
-  useEffect(() => {
+    useEffect(() => {
     const urlCategory = params.get("category");
     if (urlCategory) {
       setCategory(urlCategory);
@@ -29,7 +27,7 @@ function Explore() {
     }
   }, [params]);
 
-  // Fetch studios whenever category, search, or sort changes
+  
   useEffect(() => {
     setLoading(true);
     const t = setTimeout(() => {
@@ -38,7 +36,7 @@ function Explore() {
         .then(setStudios)
         .catch((e) => toast.error(e.message))
         .finally(() => setLoading(false));
-    }, 300); // debounce
+    }, 300); 
     
     return () => clearTimeout(t);
   }, [category, search, sort]);

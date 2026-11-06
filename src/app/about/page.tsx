@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Target, Eye, Handshake, ShieldCheck, Sparkles, Users } from "lucide-react";
+import Image from "next/image";
 
 const stats = [
   { v: "5", l: "Studio categories" },
@@ -38,11 +39,12 @@ export default function AboutPage() {
               <Link href="/add-studio" className="btn btn-outline btn-primary">Host Your Space</Link>
             </div>
           </div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=1200&h=800&fit=crop"
+          <Image
+            src="/images/hero/1.jpeg"
             alt="Photography studio with lighting equipment"
             className="w-full h-72 md:h-96 object-cover rounded-box shadow-lg"
+            width={600}
+            height={400}
           />
         </div>
       </section>
@@ -111,8 +113,8 @@ export default function AboutPage() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8">
           {team.map((m) => (
             <div key={m.name + m.role} className="card bg-base-200 shadow h-full overflow-hidden">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={m.img} alt={m.name} className="h-64 w-full object-cover" />
+              
+              <Image src={m.img} alt={m.name} className="h-64 w-full object-cover" width={600} height={400} />
               <div className="card-body p-5">
                 <h3 className="font-bold text-lg">{m.name}</h3>
                 <p className="text-sm text-base-content/70">{m.role}</p>

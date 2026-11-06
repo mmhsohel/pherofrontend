@@ -1,6 +1,6 @@
 export async function uploadAction(file: File): Promise<string> {
     const cloudName = "dwdmomytl"; 
-    const uploadPreset = "studio"; // e.g. "ml_default" or your custom name
+    const uploadPreset = "studio";
 
     const formData = new FormData();
     formData.append("file", file);
